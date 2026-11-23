@@ -1,0 +1,649 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Hetshri Shah Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Sora:wght@500;600;700;800&display=swap">
+<style>
+/* Layout: single-column scroll story, sticky nav, hero with live network canvas, alternating split sections, animated project scenes */
+:root{
+  --bg:#07070d; --charcoal:#12121a; --charcoal-2:#1a1a26; --navy:#0e1a3a; --navy-2:#182a5c;
+  --purple:#8b5cf6; --purple-2:#b39dfa; --fg:#ecebf5; --muted:#9b99b4; --line:rgba(179,157,250,.18);
+  --display:'Sora','Inter',system-ui,sans-serif; --body:'Inter',system-ui,-apple-system,sans-serif; --mono:'JetBrains Mono',ui-monospace,Menlo,monospace;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--fg);font:400 16px/1.65 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:60}
+a{color:inherit}
+h1,h2,h3{font-family:var(--display);line-height:1.15;margin:0;text-wrap:balance}
+p{margin:0}
+:focus-visible{outline:2px solid var(--purple-2);outline-offset:3px;border-radius:6px}
+.wrap{max-width:1080px;margin:0 auto}
+#progress{position:fixed;top:env(safe-area-inset-top,0px);left:0;height:3px;width:0;background:linear-gradient(90deg,var(--purple),#6d8cff);z-index:70}
+#glow{position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;background:radial-gradient(circle,rgba(139,92,246,.16),transparent 65%);transform:translate(-50%,-50%);left:-999px;top:-999px;z-index:0}
+
+/* nav */
+nav{position:sticky;top:env(safe-area-inset-top,0px);z-index:50;margin:0 calc(-1*max(16px,env(safe-area-inset-left,0px)));padding:12px max(16px,env(safe-area-inset-right,0px)) 12px max(16px,env(safe-area-inset-left,0px));background:rgba(7,7,13,.8);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font:700 1rem var(--display);text-decoration:none;letter-spacing:.02em;white-space:nowrap}
+.brand span{color:var(--purple-2)}
+.links{display:flex;gap:4px;overflow-x:auto;scrollbar-width:none;min-width:0}
+.links::-webkit-scrollbar{display:none}
+.links a{font:500 .82rem var(--body);color:var(--muted);text-decoration:none;padding:6px 12px;border-radius:99px;white-space:nowrap;transition:color .2s,background .2s}
+.links a:hover,.links a.on{color:var(--fg);background:rgba(139,92,246,.18)}
+
+/* hero */
+.hero{position:relative;padding-block:84px 72px;min-height:560px;isolation:isolate}
+#net{position:absolute;inset:-20px calc(-50vw + 50%) 0;width:100vw;height:calc(100% + 20px);z-index:-1;opacity:.9}
+.orb{position:absolute;border-radius:50%;filter:blur(70px);z-index:-2;animation:drift 14s ease-in-out infinite alternate}
+.orb.a{width:340px;height:340px;background:rgba(139,92,246,.28);top:-40px;right:4%}
+.orb.b{width:300px;height:300px;background:rgba(24,42,92,.85);bottom:-60px;left:-40px;animation-delay:-6s}
+@keyframes drift{to{transform:translate(40px,-30px) scale(1.15)}}
+.eyebrow{font:500 .78rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--purple-2);display:flex;align-items:center;gap:10px}
+.eyebrow::before{content:"";width:28px;height:1px;background:var(--purple-2)}
+.hero h1{font-size:clamp(2.6rem,8vw,5.4rem);font-weight:800;letter-spacing:-.03em;margin:18px 0 14px;background:linear-gradient(100deg,#fff 20%,var(--purple-2) 60%,#7b9bff);background-size:200% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sheen 7s linear infinite}
+@keyframes sheen{to{background-position:-200% 0}}
+.role{font:500 clamp(1.05rem,2.6vw,1.4rem) var(--mono);color:var(--fg);min-height:1.9em}
+.role .cur{display:inline-block;width:10px;height:1.1em;background:var(--purple);vertical-align:-3px;margin-left:3px;animation:blink 1s steps(2) infinite}
+@keyframes blink{50%{opacity:0}}
+.lede{max-width:56ch;margin-top:18px;color:var(--muted);font-size:1.05rem}
+.cta{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
+.btn{display:inline-flex;align-items:center;gap:8px;padding:12px 22px;border-radius:99px;font:600 .92rem var(--body);text-decoration:none;border:1px solid var(--line);color:var(--fg);transition:transform .2s,box-shadow .2s,background .2s;cursor:pointer;background:transparent}
+.btn:hover{transform:translateY(-2px)}
+.btn.primary{background:linear-gradient(135deg,var(--purple),#5b6cf0);border-color:transparent;box-shadow:0 10px 30px -10px rgba(139,92,246,.7)}
+.fade-in{animation:rise .9s cubic-bezier(.2,.7,.2,1) both}
+.fade-in:nth-child(2){animation-delay:.1s}.fade-in:nth-child(3){animation-delay:.2s}.fade-in:nth-child(4){animation-delay:.3s}.fade-in:nth-child(5){animation-delay:.4s}
+@keyframes rise{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:none}}
+.stats{display:flex;flex-wrap:wrap;gap:12px;margin-top:44px}
+.stat{padding:14px 20px;border:1px solid var(--line);border-radius:14px;background:rgba(18,18,26,.7);min-width:140px}
+.stat b{display:block;font:700 1.7rem var(--display);color:var(--purple-2);font-variant-numeric:tabular-nums}
+.stat span{font-size:.78rem;color:var(--muted)}
+
+/* sections */
+section{padding-block:72px;position:relative;z-index:1}
+.sec-head{display:flex;align-items:baseline;gap:16px;margin-bottom:36px;flex-wrap:wrap}
+.sec-head h2{font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;letter-spacing:-.02em}
+.sec-head .tag{font:500 .76rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--purple-2)}
+.sec-head::after{content:"";flex:1;min-width:40px;height:1px;background:linear-gradient(90deg,var(--line),transparent)}
+.rv{opacity:.2;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+
+.about{display:grid;grid-template-columns:1.3fr 1fr;gap:40px;align-items:center}
+.about p+p{margin-top:14px}
+.about p{color:#c9c7dc}
+.mind{margin-top:22px;padding:20px 22px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(140deg,var(--navy),var(--charcoal) 80%);position:relative;overflow:hidden}
+.mind::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,transparent 30%,rgba(139,92,246,.18) 50%,transparent 70%);background-size:250% 100%;animation:sweep 6s linear infinite}
+@keyframes sweep{from{background-position:150% 0}to{background-position:-150% 0}}
+.mind small{display:block;position:relative;font:500 .72rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--purple-2);margin-bottom:8px}
+.mind p{position:relative;color:var(--fg)!important}
+.goals{display:grid;grid-template-columns:1.15fr 1fr;gap:44px;align-items:center}
+.goal-statement{font:700 clamp(1.5rem,3.4vw,2.2rem)/1.2 var(--display);letter-spacing:-.02em;margin-bottom:28px}
+.goal-statement em{font-style:normal;background:linear-gradient(100deg,var(--purple-2),#7b9bff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.goal-list{display:grid;gap:14px}
+.goal{display:grid;grid-template-columns:56px 1fr;gap:18px;align-items:center;padding:16px 20px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(140deg,var(--charcoal-2),var(--charcoal));transition:transform .3s,border-color .3s}
+.goal:hover{transform:translateX(6px);border-color:rgba(179,157,250,.55)}
+.goal .ic{width:56px;height:56px;border-radius:14px;background:rgba(139,92,246,.14);display:grid;place-items:center}
+.goal .ic svg{width:32px;height:32px;overflow:visible}
+.goal h3{font:600 1.02rem var(--display);margin-bottom:2px}
+.goal p{color:var(--muted);font-size:.92rem;line-height:1.5}
+.draw{stroke-dasharray:60;stroke-dashoffset:60;animation:drawl 3.2s ease-in-out infinite}
+@keyframes drawl{0%{stroke-dashoffset:60}55%,100%{stroke-dashoffset:0}}
+.spark{transform-box:fill-box;transform-origin:center;animation:spk 2.2s ease-in-out infinite}
+@keyframes spk{50%{transform:scale(1.35) rotate(45deg)}}
+.layer{animation:lay 2.8s ease-in-out infinite}
+.layer.l2{animation-delay:.25s}.layer.l3{animation-delay:.5s}
+@keyframes lay{50%{transform:translateY(-3px)}}
+.wafer{width:100%;max-width:340px;margin-inline:auto;display:block;filter:drop-shadow(0 20px 40px rgba(139,92,246,.25))}
+.sweep{transform-box:view-box;transform-origin:130px 130px;animation:spin 6s linear infinite}
+.chip-card{position:relative;aspect-ratio:1;max-width:300px;width:100%;margin-inline:auto;display:grid;place-items:center}
+.chip-card svg{width:100%;height:100%;overflow:visible}
+.chip-ring{transform-origin:center;transform-box:fill-box;animation:spin 24s linear infinite}
+.chip-ring.r2{animation-duration:36s;animation-direction:reverse}
+@keyframes spin{to{transform:rotate(360deg)}}
+.pin{animation:pinpulse 2.4s ease-in-out infinite}
+@keyframes pinpulse{50%{opacity:.25}}
+
+/* timeline */
+.tl{position:relative;display:grid;gap:22px;padding-left:30px}
+.tl::before{content:"";position:absolute;left:7px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--purple),var(--navy-2))}
+.tl-item{position:relative;padding:20px 24px;border:1px solid var(--line);border-radius:16px;background:linear-gradient(160deg,var(--charcoal-2),var(--charcoal));transition:transform .3s,border-color .3s}
+.tl-item:hover{transform:translateX(6px);border-color:rgba(179,157,250,.5)}
+.tl-item::before{content:"";position:absolute;left:-30px;top:26px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--purple);box-shadow:0 0 0 0 rgba(139,92,246,.6);animation:ping 2.6s infinite}
+@keyframes ping{70%{box-shadow:0 0 0 12px rgba(139,92,246,0)}100%{box-shadow:0 0 0 0 rgba(139,92,246,0)}}
+.tl-top{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:baseline}
+.tl h3{font-size:1.15rem;font-weight:600}
+.when{font:500 .8rem var(--mono);color:var(--purple-2);white-space:nowrap}
+.sub{color:var(--muted);font-size:.95rem;margin-top:4px}
+.cgpa{display:inline-flex;margin-top:10px;font:500 .8rem var(--mono);padding:4px 12px;border-radius:99px;background:rgba(139,92,246,.15);color:var(--purple-2)}
+
+/* skills */
+.skills{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.skill-box{padding:24px;border:1px solid var(--line);border-radius:18px;background:var(--charcoal);transition:transform .3s,box-shadow .3s}
+.skill-box:hover{transform:translateY(-5px);box-shadow:0 18px 40px -22px rgba(139,92,246,.8)}
+.skill-box h3{font:600 .8rem var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--purple-2);margin-bottom:16px}
+.pills{display:flex;flex-wrap:wrap;gap:8px}
+.pill{padding:7px 14px;border-radius:99px;font-size:.88rem;background:var(--charcoal-2);border:1px solid var(--line);transition:background .2s,border-color .2s,transform .2s}
+.pill:hover{background:rgba(139,92,246,.22);border-color:var(--purple);transform:translateY(-2px)}
+
+/* projects */
+.proj{display:grid;grid-template-columns:1.15fr 1fr;gap:0;border:1px solid var(--line);border-radius:22px;overflow:hidden;background:var(--charcoal)}
+.proj+.proj{margin-top:28px}
+.proj.flip{grid-template-columns:1fr 1.15fr}
+.proj.flip .scene{order:2}
+.scene{position:relative;min-height:320px;background:linear-gradient(180deg,#0a1230,#070a1c 70%);overflow:hidden}
+.scene svg{display:block;width:100%;height:100%}
+.scene .badge{position:absolute;left:14px;bottom:12px;font:500 .68rem var(--mono);letter-spacing:.1em;text-transform:uppercase;color:var(--muted);background:rgba(7,7,13,.7);padding:4px 10px;border-radius:99px;border:1px solid var(--line)}
+.p-body{padding:32px 30px;display:flex;flex-direction:column;gap:14px;justify-content:center;min-width:0}
+.p-body .no{font:500 .76rem var(--mono);color:var(--purple-2);letter-spacing:.14em;text-transform:uppercase}
+.p-body h3{font-size:1.5rem;font-weight:700}
+.p-body p{color:#c0bed6;font-size:.98rem}
+.p-body ul{margin:0;padding-left:18px;color:#c0bed6;font-size:.95rem}
+.status{align-self:flex-start;font:500 .74rem var(--mono);padding:4px 12px;border-radius:99px;border:1px solid var(--purple);color:var(--purple-2)}
+
+/* arduino scene */
+.wire{stroke-dasharray:6 8;animation:belt 1s linear infinite}
+.ledglow{animation:glowp 1.6s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes glowp{50%{opacity:.25;transform:scale(.7)}}
+
+/* skimmer animation */
+.wave1{animation:wv 7s linear infinite}
+.wave2{animation:wv 11s linear infinite reverse}
+@keyframes wv{to{transform:translateX(-240px)}}
+#boat{animation:bob 4s ease-in-out infinite;transform-origin:300px 205px}
+@keyframes bob{0%,100%{transform:translateY(0) rotate(-.8deg)}50%{transform:translateY(5px) rotate(.8deg)}}
+.deb{animation:collect 9s linear infinite;opacity:0}
+.deb.d2{animation-delay:-3s}.deb.d3{animation-delay:-6s}
+@keyframes collect{
+  0%{transform:translate(300px,4px) rotate(0);opacity:0}
+  6%{opacity:1}
+  52%{transform:translate(0,0) rotate(20deg);opacity:1}
+  70%{transform:translate(-34px,-26px) rotate(55deg);opacity:1}
+  84%{transform:translate(-62px,-52px) rotate(90deg);opacity:0}
+  100%{opacity:0;transform:translate(-62px,-52px)}
+}
+.sig{transform-box:fill-box;transform-origin:center;animation:sig 2.6s ease-out infinite;opacity:0}
+.sig.s2{animation-delay:.8s}.sig.s3{animation-delay:1.6s}
+@keyframes sig{0%{transform:scale(.3);opacity:.9}100%{transform:scale(1.5);opacity:0}}
+.led{animation:blink 1.2s steps(2) infinite}
+.belt{animation:belt 1.2s linear infinite}
+@keyframes belt{to{stroke-dashoffset:-12}}
+.bubble{animation:bubble 5s ease-in infinite;opacity:0}
+.bubble.b2{animation-delay:-2s}.bubble.b3{animation-delay:-3.6s}
+@keyframes bubble{0%{transform:translateY(0);opacity:0}20%{opacity:.6}100%{transform:translateY(-60px);opacity:0}}
+
+/* quad animation */
+#quad{animation:hover 3.6s ease-in-out infinite;transform-origin:200px 160px}
+@keyframes hover{50%{transform:translateY(-8px) rotate(1.5deg)}}
+.rotor{transform-box:fill-box;transform-origin:center;animation:spin .35s linear infinite}
+.rotor.rev{animation-direction:reverse}
+.shadow{animation:shadow 3.6s ease-in-out infinite;transform-origin:200px 285px}
+@keyframes shadow{50%{transform:scale(.88);opacity:.25}}
+
+/* experience cards */
+.exp{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+.card{position:relative;padding:26px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(160deg,var(--navy),var(--charcoal) 70%);display:flex;flex-direction:column;gap:10px;transition:transform .3s,border-color .3s,box-shadow .3s;overflow:hidden}
+.card::after{content:"";position:absolute;inset:0;background:radial-gradient(circle at var(--mx,50%) var(--my,0%),rgba(139,92,246,.2),transparent 50%);opacity:0;transition:opacity .3s;pointer-events:none}
+.card:hover{transform:translateY(-6px);border-color:rgba(179,157,250,.55);box-shadow:0 20px 44px -26px rgba(139,92,246,.9)}
+.card:hover::after{opacity:1}
+.card .role-tag{font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--purple-2)}
+.card h3{font-size:1.15rem;font-weight:600}
+.card p{color:#c0bed6;font-size:.93rem}
+.card .when{margin-top:auto}
+
+/* achievements */
+.ach{display:flex;gap:26px;align-items:center;padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(120deg,var(--charcoal-2),var(--navy) 130%)}
+.medal{flex:none;width:96px;height:96px}
+.medal .shine{animation:shine 3.4s ease-in-out infinite;transform-box:fill-box;transform-origin:center}
+@keyframes shine{50%{transform:scale(1.07)}}
+.ach+.ach{margin-top:18px}
+.cert-ic{flex:none;width:96px;height:96px}
+.cert-ic .scan{animation:scan 3s ease-in-out infinite}
+@keyframes scan{0%,100%{transform:translateY(0);opacity:.2}50%{transform:translateY(34px);opacity:1}}
+.cert-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:12px}
+.ach h3{font-size:1.3rem;margin-bottom:6px}
+.ach p{color:#c0bed6}
+
+/* contact */
+.contact{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}
+.c-item{padding:22px;border:1px solid var(--line);border-radius:16px;background:var(--charcoal);display:flex;flex-direction:column;gap:8px;min-width:0}
+.c-item small{font:500 .72rem var(--mono);letter-spacing:.12em;text-transform:uppercase;color:var(--purple-2)}
+.c-item .v{font-size:.95rem;overflow-wrap:anywhere}
+.c-item .row{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto;padding-top:6px}
+.mini{font:500 .78rem var(--body);padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:transparent;color:var(--fg);cursor:pointer;text-decoration:none;transition:background .2s}
+.mini:hover{background:rgba(139,92,246,.22)}
+footer{padding-block:40px 56px;text-align:center;color:var(--muted);font-size:.85rem;border-top:1px solid var(--line);margin-top:32px;position:relative;z-index:1}
+
+@media (max-width:860px){
+  .about,.proj,.proj.flip,.goals{grid-template-columns:1fr}
+  .wafer{max-width:260px}
+  .proj.flip .scene{order:0}
+  .skills,.exp,.contact{grid-template-columns:1fr}
+  .chip-card{max-width:220px}
+  .scene{min-height:260px}
+  .ach{flex-direction:column;align-items:flex-start}
+}
+@media (max-width:520px){ .brand{display:none} .hero{padding-block:56px 48px} section{padding-block:52px} .p-body{padding:24px 20px} }
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.001ms!important;animation-iteration-count:1!important;transition:none!important}
+  html{scroll-behavior:auto}
+  .rv{opacity:1;transform:none}
+  .deb{opacity:1;transform:translate(120px,0)}
+}
+</style>
+
+<div id="progress"></div>
+<div id="glow"></div>
+
+<nav>
+  <div class="wrap">
+    <a class="brand" href="#top">Hetshri<span>.</span>Shah</a>
+    <div class="links" id="links">
+      <a href="#about">About</a><a href="#goals">Goals</a><a href="#education">Education</a><a href="#skills">Skills</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#achievements">Achievements</a><a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap" id="top">
+  <header class="hero">
+    <div class="orb a"></div><div class="orb b"></div>
+    <canvas id="net" aria-hidden="true"></canvas>
+    <div class="eyebrow fade-in">Portfolio · Gandhinagar, Gujarat</div>
+    <h1 class="fade-in">Hetshri Shah</h1>
+    <div class="role fade-in" aria-live="off"><span id="typed"></span><span class="cur"></span></div>
+    <p class="lede fade-in">B.Tech student in Electronics &amp; Communication Engineering with a VLSI specialization at Karnavati University (UIT). I work with Python, C and SolidWorks, and I like building ideas that clean up the real world.</p>
+    <div class="cta fade-in">
+      <a class="btn primary" href="#projects">View projects</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+    <div class="stats fade-in">
+      <div class="stat"><b data-count="9.4" data-dec="1">0</b><span>High School CGPA</span></div>
+      <div class="stat"><b data-count="9.1" data-dec="1">0</b><span>Senior Secondary CGPA</span></div>
+      <div class="stat"><b data-count="3" data-dec="0">0</b><span>Events &amp; conferences</span></div>
+    </div>
+  </header>
+
+  <section id="about">
+    <div class="sec-head"><h2 class="rv">About</h2><span class="tag rv">Who I am</span></div>
+    <div class="about">
+      <div class="rv">
+        <p>I'm an Electronics &amp; Communication Engineering student specializing in VLSI at Karnavati University (UIT), Gandhinagar.</p>
+        <p>My work so far spans an IoT-enabled autonomous catamaran skimmer for collecting floating plastic, a 3D quadcopter design in SolidWorks, and presentations at Techfest IIT Gandhinagar, the IEEE Conference on Converging Intelligence and Smart India Hackathon.</p>
+        <p>I enjoy problem solving and teamwork, and I speak English and Hindi fluently, with Gujarati as my native language.</p>
+      </div>
+      <div class="chip-card rv" aria-hidden="true">
+        <svg viewBox="0 0 240 240">
+          <defs><linearGradient id="cg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#8b5cf6"/><stop offset="1" stop-color="#2a3f8f"/></linearGradient></defs>
+          <circle class="chip-ring" cx="120" cy="120" r="112" fill="none" stroke="rgba(179,157,250,.35)" stroke-width="1" stroke-dasharray="3 9"/>
+          <circle class="chip-ring r2" cx="120" cy="120" r="94" fill="none" stroke="rgba(120,150,255,.3)" stroke-width="1" stroke-dasharray="14 10"/>
+          <g id="pins"></g>
+          <rect x="68" y="68" width="104" height="104" rx="14" fill="#12121a" stroke="url(#cg)" stroke-width="2"/>
+          <rect x="84" y="84" width="72" height="72" rx="8" fill="none" stroke="rgba(179,157,250,.35)"/>
+          <path d="M96 120h20m0 0v-14m0 14v14m0-14h28" stroke="#b39dfa" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="116" cy="120" r="4" fill="#8b5cf6"/>
+          <text x="120" y="190" text-anchor="middle" font-family="JetBrains Mono, monospace" font-size="10" fill="#9b99b4" letter-spacing="2">VLSI</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="goals">
+    <div class="sec-head"><h2 class="rv">Looking ahead</h2><span class="tag rv">What's on my mind</span></div>
+    <div class="goals">
+      <div>
+        <p class="goal-statement rv">I want to learn how semiconductor chips are designed and built, and <em>make my future in it.</em></p>
+        <div class="goal-list">
+          <div class="goal rv">
+            <div class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><path class="spark" d="M16 3l3 10 10 3-10 3-3 10-3-10-10-3 10-3z" fill="#b39dfa"/></svg></div>
+            <div><h3>Eager to learn</h3><p>I enjoy picking up new things and I'm always curious to find out how they work.</p></div>
+          </div>
+          <div class="goal rv">
+            <div class="ic"><svg viewBox="0 0 32 32" aria-hidden="true" fill="none" stroke="#b39dfa" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path class="draw" d="M4 26V6h24v20z"/><path class="draw" style="animation-delay:.3s" d="M4 16h24M16 6v20"/></svg></div>
+            <div><h3>Curious about design</h3><p>I want to understand how things are designed, from the first idea to the finished build.</p></div>
+          </div>
+          <div class="goal rv">
+            <div class="ic"><svg viewBox="0 0 32 32" aria-hidden="true"><path class="layer l1" d="M16 4l12 6-12 6-12-6z" fill="#b39dfa"/><path class="layer l2" d="M4 15l12 6 12-6" fill="none" stroke="#8b5cf6" stroke-width="2.4" stroke-linejoin="round"/><path class="layer l3" d="M4 21l12 6 12-6" fill="none" stroke="#6d8cff" stroke-width="2.4" stroke-linejoin="round"/></svg></div>
+            <div><h3>Semiconductor chips</h3><p>I'm interested in how chips are built, and I'm looking forward to a future in this field.</p></div>
+          </div>
+        </div>
+      </div>
+      <div class="rv">
+        <svg class="wafer" viewBox="0 0 260 260" role="img" aria-label="Animated silicon wafer with a scanning sweep">
+          <defs>
+            <pattern id="dies" width="20" height="20" patternUnits="userSpaceOnUse"><rect x="1.5" y="1.5" width="17" height="17" rx="2" fill="#1a1a26" stroke="#3a3f72" stroke-width="1"/><path d="M6 10h8M10 6v8" stroke="#8b5cf6" stroke-opacity=".5"/></pattern>
+            <clipPath id="wc"><circle cx="130" cy="130" r="118"/></clipPath>
+            <linearGradient id="swg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".05"/><stop offset="1" stop-color="#b39dfa" stop-opacity=".55"/></linearGradient>
+          </defs>
+          <circle cx="130" cy="130" r="124" fill="#0e1a3a" stroke="#8b5cf6" stroke-width="2"/>
+          <g clip-path="url(#wc)">
+            <rect x="0" y="0" width="260" height="260" fill="url(#dies)"/>
+            <g class="sweep"><path d="M130 130L250 130A120 120 0 0 1 233.9 190z" fill="url(#swg)"/></g>
+            <rect x="70" y="236" width="120" height="30" fill="#07070d"/>
+          </g>
+          <circle cx="130" cy="130" r="118" fill="none" stroke="#b39dfa" stroke-opacity=".35"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="sec-head"><h2 class="rv">Education</h2><span class="tag rv">Where I study</span></div>
+    <div class="tl">
+      <div class="tl-item rv">
+        <div class="tl-top"><h3>B.Tech, Electronics &amp; Communication Engg.</h3><span class="when">2026 · Pursuing</span></div>
+        <div class="sub">VLSI Specialization · Karnavati University (UIT)</div>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-top"><h3>Senior Secondary (CBSE)</h3><span class="when">June 2026</span></div>
+        <div class="sub">Gujarat Public School</div>
+        <span class="cgpa">CGPA 9.1</span>
+      </div>
+      <div class="tl-item rv">
+        <div class="tl-top"><h3>High School (CBSE)</h3><span class="when">June 2024</span></div>
+        <div class="sub">Gujarat Public School</div>
+        <span class="cgpa">CGPA 9.4</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <div class="sec-head"><h2 class="rv">Skills</h2><span class="tag rv">What I use</span></div>
+    <div class="skills">
+      <div class="skill-box rv"><h3>Technical</h3><div class="pills"><span class="pill">Python</span><span class="pill">C</span><span class="pill">SQL (basic)</span><span class="pill">SolidWorks · 3D CAD</span><span class="pill">Canva</span><span class="pill">Tinkercad</span><span class="pill">Arduino Uno</span><span class="pill">Breadboard prototyping</span></div></div>
+      <div class="skill-box rv"><h3>Soft skills</h3><div class="pills"><span class="pill">Problem solving</span><span class="pill">Teamwork</span></div></div>
+      <div class="skill-box rv"><h3>Languages</h3><div class="pills"><span class="pill">English · Fluent</span><span class="pill">Hindi · Fluent</span><span class="pill">Gujarati · Native</span></div></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <div class="sec-head"><h2 class="rv">Projects</h2><span class="tag rv">Things I build</span></div>
+
+    <article class="proj rv">
+      <div class="scene">
+        <svg id="skimmer" viewBox="0 0 600 320" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Animated illustration of a catamaran skimmer collecting floating plastic waste">
+          <defs>
+            <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#0c1740"/><stop offset="1" stop-color="#0a1230"/></linearGradient>
+            <linearGradient id="sea" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#1d3a85"/><stop offset="1" stop-color="#0a1432"/></linearGradient>
+            <linearGradient id="hull" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#cfc6ff"/><stop offset="1" stop-color="#7a63d8"/></linearGradient>
+          </defs>
+          <rect width="600" height="320" fill="url(#sky)"/>
+          <g fill="#fff" opacity=".5"><circle cx="70" cy="40" r="1.3"/><circle cx="180" cy="70" r="1"/><circle cx="470" cy="38" r="1.3"/><circle cx="540" cy="90" r="1"/><circle cx="330" cy="30" r="1"/></g>
+          <circle cx="510" cy="64" r="22" fill="#b39dfa" opacity=".22"/>
+          <rect x="0" y="206" width="600" height="114" fill="url(#sea)"/>
+
+          <g id="boat">
+            <!-- rear hull -->
+            <path d="M210 190h170l16 -2c-4 12-16 22-34 22H236c-16 0-26-8-26-20z" fill="#5a49b5" opacity=".85" transform="translate(12 -8)"/>
+            <!-- deck + posts -->
+            <rect x="226" y="164" width="190" height="8" rx="3" fill="#2a2f55"/>
+            <rect x="244" y="172" width="5" height="22" fill="#4b4f85"/><rect x="380" y="172" width="5" height="22" fill="#4b4f85"/>
+            <rect x="232" y="158" width="64" height="6" rx="2" fill="#3a3f72"/>
+            <!-- mast + antenna -->
+            <rect x="262" y="116" width="4" height="42" fill="#c9c3ef"/>
+            <circle cx="264" cy="112" r="5" fill="#b39dfa"/>
+            <circle class="led" cx="264" cy="112" r="2" fill="#fff"/>
+            <g transform="translate(264 112)">
+              <circle class="sig" r="14" fill="none" stroke="#b39dfa" stroke-width="1.5"/>
+              <circle class="sig s2" r="14" fill="none" stroke="#b39dfa" stroke-width="1.5"/>
+              <circle class="sig s3" r="14" fill="none" stroke="#b39dfa" stroke-width="1.5"/>
+            </g>
+            <!-- collection bin -->
+            <path d="M330 140h52l-6 24h-40z" fill="#1a1a26" stroke="#8b5cf6" stroke-width="2"/>
+            <path d="M338 150h36" stroke="#8b5cf6" stroke-width="1.5" opacity=".6"/>
+            <!-- conveyor / scoop to bow -->
+            <path d="M336 168L442 214" stroke="#cfc6ff" stroke-width="5" stroke-linecap="round" opacity=".9"/>
+            <path class="belt" d="M338 163L440 208" stroke="#0a1230" stroke-width="2" stroke-dasharray="4 8" fill="none"/>
+            <path d="M432 200l22 18-26 2z" fill="none" stroke="#8b5cf6" stroke-width="2" stroke-linejoin="round"/>
+            <!-- front hull -->
+            <path d="M210 190h170l46 -2c-6 14-22 26-44 26H236c-16 0-26-10-26-24z" fill="url(#hull)"/>
+            <path d="M226 200h180" stroke="#ffffff" stroke-opacity=".35" stroke-width="2" stroke-linecap="round"/>
+          </g>
+
+          <!-- debris drifting to the collector (anchored at scoop tip) -->
+          <g transform="translate(440 214)">
+            <g class="deb"><rect x="-4" y="-14" width="8" height="18" rx="3" fill="#8fd3ff"/><rect x="-2" y="-18" width="4" height="5" rx="1" fill="#e9e6ff"/></g>
+            <g class="deb d2"><path d="M-9 -2c0-8 18-8 18 0s-4 7-9 7-9-1-9-7z" fill="#f5f3ff" opacity=".9"/></g>
+            <g class="deb d3"><rect x="-8" y="-8" width="16" height="9" rx="3" fill="#ffb3c7"/></g>
+          </g>
+
+          <!-- waves -->
+          <g id="waves"></g>
+          <g fill="none" stroke="#8fb3ff" stroke-width="1.2"><circle class="bubble" cx="150" cy="290" r="3"/><circle class="bubble b2" cx="280" cy="300" r="2.4"/><circle class="bubble b3" cx="430" cy="292" r="3"/></g>
+        </svg>
+        <span class="badge">Concept illustration</span>
+      </div>
+      <div class="p-body">
+        <span class="no">Featured project</span>
+        <h3>IoT-Enabled Autonomous Catamaran Skimmer</h3>
+        <p>An autonomous twin-hull skimmer with IoT connectivity, designed to collect floating plastic waste from water bodies. It builds on the InnovateX idea I presented at Techfest, IIT Gandhinagar.</p>
+        <div class="pills"><span class="pill">IoT</span><span class="pill">Autonomous</span><span class="pill">Catamaran</span><span class="pill">Plastic waste cleanup</span></div>
+      </div>
+    </article>
+
+    <article class="proj flip rv">
+      <div class="scene">
+        <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Animated quadcopter model hovering">
+          <defs><radialGradient id="qg" cx=".5" cy=".4" r=".7"><stop offset="0" stop-color="#8b5cf6" stop-opacity=".3"/><stop offset="1" stop-color="#0a1230" stop-opacity="0"/></radialGradient></defs>
+          <rect width="400" height="320" fill="url(#qg)"/>
+          <g stroke="rgba(179,157,250,.12)"><path d="M0 285h400M0 255h400M0 225h400"/><path d="M80 225v95M160 225v95M240 225v95M320 225v95"/></g>
+          <ellipse class="shadow" cx="200" cy="285" rx="70" ry="8" fill="#000" opacity=".5"/>
+          <g id="quad">
+            <g stroke="#6d6aa8" stroke-width="8" stroke-linecap="round"><path d="M200 160L110 100"/><path d="M200 160L290 100"/><path d="M200 160L110 220"/><path d="M200 160L290 220"/></g>
+            <g fill="#1a1a26" stroke="#b39dfa" stroke-width="2"><circle cx="110" cy="100" r="14"/><circle cx="290" cy="100" r="14"/><circle cx="110" cy="220" r="14"/><circle cx="290" cy="220" r="14"/></g>
+            <g fill="#b39dfa" opacity=".75">
+              <ellipse class="rotor" cx="110" cy="100" rx="42" ry="5"/>
+              <ellipse class="rotor rev" cx="290" cy="100" rx="42" ry="5"/>
+              <ellipse class="rotor rev" cx="110" cy="220" rx="42" ry="5"/>
+              <ellipse class="rotor" cx="290" cy="220" rx="42" ry="5"/>
+            </g>
+            <rect x="170" y="130" width="60" height="60" rx="14" fill="#2a2f55" stroke="#8b5cf6" stroke-width="2"/>
+            <rect x="184" y="144" width="32" height="32" rx="8" fill="#12121a" stroke="#b39dfa" stroke-opacity=".5"/>
+            <circle class="led" cx="200" cy="160" r="4" fill="#8b5cf6"/>
+          </g>
+        </svg>
+        <span class="badge">3D model concept</span>
+      </div>
+      <div class="p-body">
+        <span class="no">Group project</span>
+        <h3>Quadcopter 3D Design</h3>
+        <ul>
+          <li>Designing a 3D quadcopter model in SolidWorks as a group project.</li>
+          <li>Covers part modeling and assembly of the frame, arms and motor mounts.</li>
+        </ul>
+        <div class="pills"><span class="pill">SolidWorks</span><span class="pill">3D CAD</span><span class="pill">Assembly</span></div>
+        <span class="status">In progress</span>
+      </div>
+    </article>
+
+    <article class="proj rv">
+      <div class="scene">
+        <svg viewBox="0 0 400 320" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Animated Arduino Uno and breadboard circuit with a blinking LED">
+          <defs>
+            <pattern id="holes" width="12" height="12" patternUnits="userSpaceOnUse"><circle cx="6" cy="6" r="1.6" fill="#0a1230"/></pattern>
+            <radialGradient id="lg"><stop offset="0" stop-color="#ff9ec0"/><stop offset="1" stop-color="#ff9ec0" stop-opacity="0"/></radialGradient>
+          </defs>
+          <!-- Arduino Uno -->
+          <rect x="36" y="28" width="230" height="118" rx="10" fill="#16295c" stroke="#6d8cff" stroke-width="2"/>
+          <rect x="36" y="54" width="44" height="40" rx="4" fill="#2a2f55" stroke="#b39dfa" stroke-opacity=".6"/>
+          <rect x="150" y="62" width="70" height="26" rx="3" fill="#12121a" stroke="#b39dfa" stroke-opacity=".6"/>
+          <g fill="#12121a" stroke="#6d8cff" stroke-opacity=".7"><rect x="92" y="34" width="150" height="10" rx="2"/><rect x="92" y="130" width="150" height="10" rx="2"/></g>
+          <circle class="led" cx="112" cy="96" r="4" fill="#8b5cf6"/>
+          <text x="148" y="118" font-family="JetBrains Mono, monospace" font-size="11" fill="#b39dfa" letter-spacing="2">ARDUINO UNO</text>
+          <!-- breadboard -->
+          <rect x="36" y="188" width="330" height="108" rx="10" fill="#1a1a26" stroke="#3a3f72" stroke-width="2"/>
+          <rect x="48" y="198" width="306" height="88" fill="url(#holes)"/>
+          <path d="M48 242h306" stroke="#0a1230" stroke-width="6"/>
+          <!-- wires -->
+          <path class="wire" d="M154 140V176H198V204" fill="none" stroke="#ff9ec0" stroke-width="3" stroke-linecap="round"/>
+          <path class="wire" d="M222 140V170H318V204" fill="none" stroke="#8fd3ff" stroke-width="3" stroke-linecap="round" style="animation-direction:reverse"/>
+          <!-- resistor + LED -->
+          <g transform="translate(198 222)"><rect x="-4" y="-4" width="72" height="8" rx="4" fill="#c9b48a"/><g fill="#5b3a1a"><rect x="14" y="-4" width="5" height="8"/><rect x="26" y="-4" width="5" height="8"/><rect x="38" y="-4" width="5" height="8"/></g></g>
+          <circle class="ledglow" cx="318" cy="238" r="34" fill="url(#lg)"/>
+          <path d="M306 252v-14a12 12 0 0 1 24 0v14z" fill="#ff6f9c"/>
+          <path d="M312 252v12M324 252v12" stroke="#cfc6ff" stroke-width="2"/>
+        </svg>
+        <span class="badge">Circuit illustration</span>
+      </div>
+      <div class="p-body">
+        <span class="no">College assignment</span>
+        <h3>Arduino Uno Circuit Work</h3>
+        <p>Worked with Tinkercad, an Arduino Uno and a breadboard for a college assignment, building hands-on electronics experience alongside my VLSI coursework.</p>
+        <div class="pills"><span class="pill">Tinkercad</span><span class="pill">Arduino Uno</span><span class="pill">Breadboard</span></div>
+      </div>
+    </article>
+  </section>
+
+  <section id="experience">
+    <div class="sec-head"><h2 class="rv">Participation &amp; Experience</h2><span class="tag rv">Where I showed up</span></div>
+    <div class="exp">
+      <div class="card rv">
+        <span class="role-tag">Participant</span>
+        <h3>Smart India Hackathon</h3>
+        <p>Took part as a participant in Smart India Hackathon, the national innovation and problem-solving competition.</p>
+      </div>
+      <div class="card rv">
+        <span class="role-tag">Presenter</span>
+        <h3>Techfest, IIT Gandhinagar</h3>
+        <p>Presented the “InnovateX” concept for an AI-powered autonomous skimmer to remove plastic waste from water bodies.</p>
+      </div>
+      <div class="card rv">
+        <span class="role-tag">Participant</span>
+        <h3>IEEE Conference on Converging Intelligence</h3>
+        <p>Engaged with research papers on emerging technologies and next-generation innovations, and gained exposure to current research trends through paper presentations and technical sessions.</p>
+        <span class="when">2026</span>
+      </div>
+    </div>
+  </section>
+
+  <section id="achievements">
+    <div class="sec-head"><h2 class="rv">Achievements &amp; Certifications</h2><span class="tag rv">Recognition</span></div>
+    <div class="ach rv">
+      <svg class="medal" viewBox="0 0 96 96" aria-hidden="true">
+        <defs><linearGradient id="mg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f4f2ff"/><stop offset="1" stop-color="#8d89b0"/></linearGradient></defs>
+        <path d="M30 4h14l8 28H38z" fill="#5b6cf0"/><path d="M52 4h14L58 32H44z" fill="#8b5cf6"/>
+        <g class="shine"><circle cx="48" cy="58" r="30" fill="url(#mg)"/><circle cx="48" cy="58" r="23" fill="none" stroke="#fff" stroke-opacity=".6" stroke-width="2"/>
+        <path d="M48 44l4.4 9 9.9 1.4-7.2 7 1.7 9.8-8.8-4.6-8.8 4.6 1.7-9.8-7.2-7 9.9-1.4z" fill="#6c6894"/></g>
+      </svg>
+      <div>
+        <h3>Silver Medal &amp; Certificate of Merit</h3>
+        <p>Reliance Foundation Drishti Art and Essay Competition · 2019</p>
+      </div>
+    </div>
+    <div class="ach rv">
+      <svg class="cert-ic" viewBox="0 0 96 96" aria-hidden="true">
+        <rect x="10" y="14" width="76" height="60" rx="8" fill="#12121a" stroke="#8b5cf6" stroke-width="2"/>
+        <g stroke="#b39dfa" stroke-width="2" stroke-linecap="round" opacity=".7"><path d="M24 32h48"/><path d="M24 44h34"/><path d="M24 56h22"/></g>
+        <circle cx="68" cy="58" r="9" fill="#5b6cf0"/><path d="M63.5 58l3 3 6-6" stroke="#fff" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+        <rect class="scan" x="14" y="18" width="68" height="3" rx="1.5" fill="#8b5cf6"/>
+        <path d="M34 74l-4 14 8-4 4 6 2-16M62 74l4 14-8-4-4 6-2-16" fill="none" stroke="#6d8cff" stroke-width="2" stroke-linejoin="round" opacity=".0"/>
+      </svg>
+      <div>
+        <h3>Artificial Intelligence Foundations: Thinking Machines</h3>
+        <p>Certificate of completion · LinkedIn Learning · 18 Nov 2026 · 1 hour 36 minutes</p>
+        <div class="cert-meta"><span class="pill">Machine Learning</span><span class="pill">Artificial Intelligence (AI)</span><span class="pill">AI Foundations</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="sec-head"><h2 class="rv">Contact</h2><span class="tag rv">Let's talk</span></div>
+    <div class="contact">
+      <div class="c-item rv"><small>Email</small><span class="v">Hetshrishah2121@gmail.com</span><div class="row"><button class="mini" data-copy="Hetshrishah2121@gmail.com">Copy</button><a class="mini" href="mailto:Hetshrishah2121@gmail.com">Open mail</a></div></div>
+      <div class="c-item rv"><small>Phone</small><span class="v">7984579190</span><div class="row"><button class="mini" data-copy="7984579190">Copy</button></div></div>
+      <div class="c-item rv"><small>LinkedIn</small><span class="v">linkedin.com/in/hetshri-shah-870357432</span><div class="row"><a class="mini" href="https://www.linkedin.com/in/hetshri-shah-870357432" target="_blank" rel="noopener">Open profile</a><button class="mini" data-copy="linkedin.com/in/hetshri-shah-870357432">Copy</button></div></div>
+      <div class="c-item rv"><small>Instagram</small><span class="v">@hetshri2121</span><div class="row"><a class="mini" href="https://www.instagram.com/hetshri2121" target="_blank" rel="noopener">Open profile</a><button class="mini" data-copy="hetshri2121">Copy</button></div></div>
+    </div>
+  </section>
+</main>
+
+<footer>© Hetshri Shah · Gandhinagar, Gujarat</footer>
+
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // scroll progress + glow
+  var bar = document.getElementById('progress');
+  function prog(){ var h=document.documentElement.scrollHeight-innerHeight; bar.style.width=(h>0?scrollY/h*100:0)+'%'; }
+  addEventListener('scroll',prog,{passive:true}); prog();
+  var glow=document.getElementById('glow');
+  if(!reduce) addEventListener('pointermove',function(e){glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px';},{passive:true});
+
+  // typed roles
+  var roles=['B.Tech ECE · VLSI Specialization','Python · C · SolidWorks','Problem solver & team player'];
+  var t=document.getElementById('typed'), ri=0, ci=0, del=false;
+  if(reduce){ t.textContent=roles[0]; }
+  else (function tick(){
+    var w=roles[ri];
+    t.textContent=w.slice(0,ci);
+    if(!del && ci<w.length){ci++;return setTimeout(tick,55);}
+    if(!del){del=true;return setTimeout(tick,1600);}
+    if(ci>0){ci--;return setTimeout(tick,28);}
+    del=false;ri=(ri+1)%roles.length;setTimeout(tick,300);
+  })();
+
+  // hero network canvas
+  var cv=document.getElementById('net'), cx=cv.getContext('2d'), pts=[], W=0,H=0, dpr=Math.min(devicePixelRatio||1,2);
+  function size(){ var r=cv.getBoundingClientRect(); W=r.width;H=r.height; cv.width=W*dpr;cv.height=H*dpr; cx.setTransform(dpr,0,0,dpr,0,0);
+    var n=Math.round(Math.min(70,W*H/16000)); pts=[]; for(var i=0;i<n;i++) pts.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.35,vy:(Math.random()-.5)*.35}); }
+  function draw(){
+    cx.clearRect(0,0,W,H);
+    for(var i=0;i<pts.length;i++){ var p=pts[i];
+      if(!reduce){p.x+=p.vx;p.y+=p.vy; if(p.x<0||p.x>W)p.vx*=-1; if(p.y<0||p.y>H)p.vy*=-1;}
+      for(var j=i+1;j<pts.length;j++){ var q=pts[j],dx=p.x-q.x,dy=p.y-q.y,d=dx*dx+dy*dy;
+        if(d<16000){ cx.strokeStyle='rgba(139,92,246,'+(0.28*(1-d/16000))+')'; cx.lineWidth=1; cx.beginPath();
+          // right-angle "circuit trace" segments
+          cx.moveTo(p.x,p.y); cx.lineTo(q.x,p.y); cx.lineTo(q.x,q.y); cx.stroke(); } }
+      cx.fillStyle='rgba(179,157,250,.7)'; cx.fillRect(p.x-1.5,p.y-1.5,3,3);
+    }
+    if(!reduce) requestAnimationFrame(draw);
+  }
+  size(); draw(); addEventListener('resize',function(){size(); if(reduce)draw();});
+
+  // chip pins
+  var pins=document.getElementById('pins'), s='';
+  for(var k=0;k<5;k++){ var o=84+k*18;
+    s+='<rect class="pin" style="animation-delay:'+(k*.3)+'s" x="'+(o-2)+'" y="52" width="4" height="14" fill="#8b5cf6"/>';
+    s+='<rect class="pin" style="animation-delay:'+(k*.3+.15)+'s" x="'+(o-2)+'" y="174" width="4" height="14" fill="#8b5cf6"/>';
+    s+='<rect class="pin" style="animation-delay:'+(k*.3+.1)+'s" x="52" y="'+(o-2)+'" width="14" height="4" fill="#6d8cff"/>';
+    s+='<rect class="pin" style="animation-delay:'+(k*.3+.2)+'s" x="174" y="'+(o-2)+'" width="14" height="4" fill="#6d8cff"/>'; }
+  pins.innerHTML=s;
+
+  // waves for skimmer
+  var g=document.getElementById('waves');
+  function wave(y,amp,fill,cls,op){
+    var d='M0 '+y; for(var x=0;x<=960;x+=60){ d+=' q15 '+(-amp)+' 30 0 t30 0'; }
+    d+=' V320 H0z';
+    return '<path class="'+cls+'" d="'+d+'" fill="'+fill+'" opacity="'+op+'"/>'; }
+  g.innerHTML=wave(206,6,'#2a4fa8','wave2',.55)+wave(214,5,'#16307a','wave1',.9)+wave(232,4,'#0d1d52','wave2',1);
+
+  // reveal
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}});},{threshold:.12});
+  document.querySelectorAll('.rv').forEach(function(el){io.observe(el);});
+
+  // counters
+  var cio=new IntersectionObserver(function(es){es.forEach(function(e){ if(!e.isIntersecting)return; cio.unobserve(e.target);
+    var el=e.target, to=parseFloat(el.dataset.count), dec=+el.dataset.dec, st=performance.now();
+    if(reduce){el.textContent=to.toFixed(dec);return;}
+    (function f(n){var p=Math.min((n-st)/1400,1); el.textContent=(to*(1-Math.pow(1-p,3))).toFixed(dec); if(p<1)requestAnimationFrame(f);})(st);
+  });},{threshold:.5});
+  document.querySelectorAll('[data-count]').forEach(function(el){cio.observe(el);});
+
+  // card spotlight
+  document.querySelectorAll('.card').forEach(function(c){ c.addEventListener('pointermove',function(e){var r=c.getBoundingClientRect();c.style.setProperty('--mx',(e.clientX-r.left)+'px');c.style.setProperty('--my',(e.clientY-r.top)+'px');}); });
+
+  // active nav
+  var secs=[].slice.call(document.querySelectorAll('main section')), as=[].slice.call(document.querySelectorAll('#links a'));
+  var nio=new IntersectionObserver(function(es){es.forEach(function(e){ if(e.isIntersecting){ as.forEach(function(a){a.classList.toggle('on',a.getAttribute('href')==='#'+e.target.id);}); } });},{rootMargin:'-45% 0px -50% 0px'});
+  secs.forEach(function(s){nio.observe(s);});
+
+  // copy buttons
+  document.querySelectorAll('[data-copy]').forEach(function(b){ b.addEventListener('click',function(){
+    var v=b.dataset.copy, old=b.textContent;
+    function done(){b.textContent='Copied';setTimeout(function(){b.textContent=old;},1400);}
+    try{ navigator.clipboard.writeText(v).then(done,function(){b.textContent='Select text above';setTimeout(function(){b.textContent=old;},1800);}); }
+    catch(e){ b.textContent='Select text above'; setTimeout(function(){b.textContent=old;},1800); }
+  }); });
+})();
+</script>
+
+</body></html>
